@@ -16,3 +16,6 @@ bin/
 # OS
 .DS_Store
 Thumbs.db
+
+# Java build artifacts
+build/
