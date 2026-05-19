@@ -60,7 +60,7 @@
 - ⏳ Part A: JUnit test file (`IAlgoShortestPathTest`).
 - ⏳ Part A: package AlgorithmModule as a JAR.
 - ✅ Part B: skeleton (`ParkLightApp/` directory tree, JAR in lib/, empty datasource.txt).
-- ⏳ Part B: DataModels (`Vehicle`, `ParkingSpot`, `ParkingTicket`, `SpotType`, `VehicleType`).
+- ✅ Part B: DataModels (`Vehicle`, `ParkingSpot`, `ParkingTicket`, `SpotType`, `VehicleType`).
 - ⏳ Part B: DAO layer (`IDao`, `DaoFileImpl`).
 - ⏳ Part B: Services (`ParkingService`, `BillingService`).
 - ⏳ Part B: End-to-end test (`ParkLightServiceTest`).
