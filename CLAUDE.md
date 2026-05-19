@@ -64,7 +64,7 @@
 - ✅ Part B: DataModels (`Vehicle`, `ParkingSpot`, `ParkingTicket`, `SpotType`, `VehicleType`).
 - ✅ Part B: DAO layer (`IDao`, `DaoFileImpl`).
 - ✅ Part B: Services (`ParkingService`, `BillingService`).
-- ⏳ Part B: End-to-end test (`ParkLightServiceTest`).
+- ✅ Part B: End-to-end test (`ParkingServiceTest`).
 
 ## Working With Me
 - I'll send you task-specific prompts one at a time.
