@@ -11,7 +11,6 @@ import java.util.Map;
  * Holds the graph and shares helper code between concrete algorithms.
  *
  * @param <T> the type of graph nodes
- * @author Tal Almagor
  */
 public abstract class AbstractAlgoShortestPath<T> implements IAlgoShortestPath<T> {
 

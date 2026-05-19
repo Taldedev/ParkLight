@@ -6,8 +6,6 @@ import java.util.Objects;
 /**
  * A single parking spot in the lot.
  * Coordinates (x, y) are used by the A* heuristic to estimate distances.
- *
- * @author Tal Almagor
  */
 public class ParkingSpot implements Serializable {
 

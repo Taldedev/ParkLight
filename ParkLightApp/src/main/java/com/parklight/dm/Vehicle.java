@@ -5,8 +5,6 @@ import java.util.Objects;
 
 /**
  * A vehicle that wants to park in the lot.
- *
- * @author Tal Almagor
  */
 public class Vehicle implements Serializable {
 

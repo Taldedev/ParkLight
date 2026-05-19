@@ -12,7 +12,6 @@ import java.util.Set;
  * Works on graphs with non-negative edge weights.
  *
  * @param <T> the type of graph nodes
- * @author Tal Almagor
  */
 public class DijkstraAlgoImpl<T> extends AbstractAlgoShortestPath<T> {
 

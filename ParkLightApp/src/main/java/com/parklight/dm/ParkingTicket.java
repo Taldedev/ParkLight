@@ -6,8 +6,6 @@ import java.util.Objects;
 /**
  * A ticket issued when a vehicle parks. Tracks entry/exit times and price.
  * exitTime = 0 means the vehicle is still parked.
- *
- * @author Tal Almagor
  */
 public class ParkingTicket implements Serializable {
 

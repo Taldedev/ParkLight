@@ -6,7 +6,6 @@ import java.util.List;
  * Shortest path algorithms over a weighted directed graph.
  *
  * @param <T> the type of graph nodes
- * @author Tal Almagor
  */
 public interface IAlgoShortestPath<T> {
 

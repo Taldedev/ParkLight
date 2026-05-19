@@ -15,7 +15,6 @@ import java.util.function.BiFunction;
  * overestimates the real remaining distance) the result is optimal.
  *
  * @param <T> the type of graph nodes
- * @author Tal Almagor
  */
 public class AStarAlgoImpl<T> extends AbstractAlgoShortestPath<T> {
 

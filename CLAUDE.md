@@ -1,7 +1,8 @@
 # ParkLight — Development Guide
 
 ## Identity
-- Git commits and `@author` tags must always use: **Tal Almagor <talmagor@mishloha.co.il>**
+- Git commits use: **Tal Almagor <talmagor@mishloha.co.il>**
+- Do not add `@author` tags to source files.
 
 ## Project Overview
 - Final project for the Advanced Java course at HIT.
@@ -38,7 +39,7 @@
 ## Style Rules (CRITICAL — the lecturer checks for AI-generated style)
 - Comments **short** and in **English**.
 - Method-level comments: plain `//` only, no JavaDoc per method.
-- Class-level JavaDoc: 2–4 lines, with `@param` and `@author Tal Almagor`.
+- Class-level JavaDoc: 2–4 lines. Include `@param` only when the class is generic.
 - **Avoid these AI tells:**
   - Philosophical or metaphorical phrasing ("best understood as", "boring-but-shared", "the secret sauce").
   - Adjectives like "elegant", "robust", "lightweight", "production-ready", "comprehensive", "powerful".

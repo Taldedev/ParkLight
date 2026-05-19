@@ -14,8 +14,6 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * JUnit tests for the shortest path algorithm family.
- *
- * @author Tal Almagor
  */
 public class IAlgoShortestPathTest {
 
