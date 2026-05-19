@@ -19,63 +19,73 @@ Final project for the Advanced Java course at HIT.
 ## How to build
 
 ### Part A - AlgorithmModule
-cd AlgorithmModule
-mkdir -p build/main build/test build/all
-javac --release 8 -d build/main 
-src/main/java/com/parklight/algorithm/*.java
-javac --release 8 -d build/test 
--cp "build/main:lib/junit-4.13.2.jar:lib/hamcrest-core.jar" 
-src/main/test/com/parklight/algorithm/*.java
-cp -R build/main/* build/all/
-cp -R build/test/* build/all/
-jar cf AlgorithmModule.jar -C build/all .
+
+    cd AlgorithmModule
+    mkdir -p build/main build/test build/all
+
+    javac --release 8 -d build/main \
+        src/main/java/com/parklight/algorithm/*.java
+
+    javac --release 8 -d build/test \
+        -cp "build/main:lib/junit-4.13.2.jar:lib/hamcrest-core.jar" \
+        src/main/test/com/parklight/algorithm/*.java
+
+    cp -R build/main/* build/all/
+    cp -R build/test/* build/all/
+    jar cf AlgorithmModule.jar -C build/all .
 
 ### Part B - ParkLightApp
-cd ParkLightApp
-mkdir -p build/main build/test
-javac --release 8 -d build/main 
--cp "lib/AlgorithmModule.jar" 
-src/main/java/com/parklight/dm/.java 
-src/main/java/com/parklight/dao/.java 
-src/main/java/com/parklight/service/*.java
-javac --release 8 -d build/test 
--cp "build/main:lib/AlgorithmModule.jar:../AlgorithmModule/lib/junit-4.13.2.jar:../AlgorithmModule/lib/hamcrest-core.jar" 
-src/main/test/com/parklight/service/*.java
+
+    cd ParkLightApp
+    mkdir -p build/main build/test
+
+    javac --release 8 -d build/main \
+        -cp "lib/AlgorithmModule.jar" \
+        src/main/java/com/parklight/dm/*.java \
+        src/main/java/com/parklight/dao/*.java \
+        src/main/java/com/parklight/service/*.java
+
+    javac --release 8 -d build/test \
+        -cp "build/main:lib/AlgorithmModule.jar:../AlgorithmModule/lib/junit-4.13.2.jar:../AlgorithmModule/lib/hamcrest-core.jar" \
+        src/main/test/com/parklight/service/*.java
 
 ## How to run the tests
 
 ### Part A (11 tests)
-cd AlgorithmModule
-java -cp "AlgorithmModule.jar:lib/junit-4.13.2.jar:lib/hamcrest-core.jar" 
-org.junit.runner.JUnitCore com.parklight.algorithm.IAlgoShortestPathTest
+
+    cd AlgorithmModule
+    java -cp "AlgorithmModule.jar:lib/junit-4.13.2.jar:lib/hamcrest-core.jar" \
+        org.junit.runner.JUnitCore com.parklight.algorithm.IAlgoShortestPathTest
 
 ### Part B (11 tests)
-cd ParkLightApp
-java -cp "build/main:build/test:lib/AlgorithmModule.jar:../AlgorithmModule/lib/junit-4.13.2.jar:../AlgorithmModule/lib/hamcrest-core.jar" 
-org.junit.runner.JUnitCore com.parklight.service.ParkingServiceTest
+
+    cd ParkLightApp
+    java -cp "build/main:build/test:lib/AlgorithmModule.jar:../AlgorithmModule/lib/junit-4.13.2.jar:../AlgorithmModule/lib/hamcrest-core.jar" \
+        org.junit.runner.JUnitCore com.parklight.service.ParkingServiceTest
 
 ## Architecture
-+-------------------------------------------------+
-|  ParkingServiceTest (end-to-end test)           |
-+-------------------------------------------------+
-|
-v
-+-------------------------------------------------+
-|  Service layer                                  |
-|    ParkingService    BillingService             |
-+-------------------------------------------------+
-|                 |
-v                 v
-+--------------+   +-----------------+
-|  IDao (DAO)  |   |  IAlgoShortest- |
-|              |   |       Path      |
-+--------------+   +-----------------+
-|                 |
-v                 v
-+--------------+   +-----------------+
-| DaoFileImpl  |   | DijkstraAlgo /  |
-| (Object I/O) |   |    AStarAlgo    |
-+--------------+   +-----------------+
+
+    +-------------------------------------------------+
+    |  ParkingServiceTest (end-to-end test)           |
+    +-------------------------------------------------+
+                           |
+                           v
+    +-------------------------------------------------+
+    |  Service layer                                  |
+    |    ParkingService    BillingService             |
+    +-------------------------------------------------+
+            |                 |
+            v                 v
+    +--------------+   +-----------------+
+    |  IDao (DAO)  |   |  IAlgoShortest- |
+    |              |   |       Path      |
+    +--------------+   +-----------------+
+            |                 |
+            v                 v
+    +--------------+   +-----------------+
+    | DaoFileImpl  |   | DijkstraAlgo /  |
+    | (Object I/O) |   |    AStarAlgo    |
+    +--------------+   +-----------------+
 
 Services depend on interfaces, not concrete classes. The shortest-path
 algorithm is injected from outside, so swapping Dijkstra for A* requires no
