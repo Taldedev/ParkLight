@@ -9,7 +9,7 @@
 - Tagline: *Light the way to your spot.*
 - Two-module project:
   - `AlgorithmModule/` — Strategy-pattern library of shortest-path algorithms (Part A).
-  - `ParkLightProject/` — The application that uses the library (Part B).
+  - `ParkLightApp/` — The application that uses the library (Part B).
 
 ## Domain
 - Spot types: `REGULAR`, `DISABLED`, `ELECTRIC`.
@@ -59,7 +59,11 @@
 - ✅ Part A: interface, abstract, Dijkstra, A*, JUnit lib in place.
 - ⏳ Part A: JUnit test file (`IAlgoShortestPathTest`).
 - ⏳ Part A: package AlgorithmModule as a JAR.
-- ⏳ Part B: everything (`Vehicle`, `ParkingSpot`, `ParkingTicket`, `SpotType`, `VehicleType`, `IDao`, `DaoFileImpl`, `ParkingService`, `BillingService`, `datasource.txt`, `ParkLightServiceTest`).
+- ✅ Part B: skeleton (`ParkLightApp/` directory tree, JAR in lib/, empty datasource.txt).
+- ⏳ Part B: DataModels (`Vehicle`, `ParkingSpot`, `ParkingTicket`, `SpotType`, `VehicleType`).
+- ⏳ Part B: DAO layer (`IDao`, `DaoFileImpl`).
+- ⏳ Part B: Services (`ParkingService`, `BillingService`).
+- ⏳ Part B: End-to-end test (`ParkLightServiceTest`).
 
 ## Working With Me
 - I'll send you task-specific prompts one at a time.
