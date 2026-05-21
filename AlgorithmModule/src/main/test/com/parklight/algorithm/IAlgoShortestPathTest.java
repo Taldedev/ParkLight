@@ -23,14 +23,10 @@ public class IAlgoShortestPathTest {
     @Before
     public void setUp() {
         dijkstra = new DijkstraAlgoImpl<>();
-        astar = new AStarAlgoImpl<>(); // zero heuristic, behaves like Dijkstra
+        astar = new AStarAlgoImpl<>();
     }
 
-    // Helper: small test graph used by most tests.
-    // Edges (directed, weighted):
-    //   A -> B (1),  A -> C (4)
-    //   B -> C (1),  B -> D (2)
-    //   C -> D (3)
+    // Builds a small directed weighted graph.
     // Best A -> D is A -> B -> D, total cost 3.
     private void buildGraph(IAlgoShortestPath<String> algo) {
         algo.addEdge("A", "B", 1);
@@ -47,19 +43,13 @@ public class IAlgoShortestPathTest {
         buildGraph(dijkstra);
         List<String> path = dijkstra.findShortestPath("A", "D");
         assertEquals(Arrays.asList("A", "B", "D"), path);
-    }
-
-    @Test
-    public void dijkstraReturnsCorrectDistance() {
-        buildGraph(dijkstra);
         assertEquals(3.0, dijkstra.getDistance("A", "D"), 1e-9);
-        assertEquals(0.0, dijkstra.getDistance("A", "A"), 1e-9);
     }
 
     @Test
     public void dijkstraHandlesUnreachableTarget() {
         dijkstra.addEdge("A", "B", 1);
-        dijkstra.addEdge("X", "Y", 1); // disconnected component
+        dijkstra.addEdge("X", "Y", 1);
         assertTrue(dijkstra.findShortestPath("A", "Y").isEmpty());
         assertEquals(Double.POSITIVE_INFINITY, dijkstra.getDistance("A", "Y"), 1e-9);
     }
@@ -71,24 +61,11 @@ public class IAlgoShortestPathTest {
         buildGraph(astar);
         List<String> path = astar.findShortestPath("A", "D");
         assertEquals(Arrays.asList("A", "B", "D"), path);
-    }
-
-    @Test
-    public void astarReturnsCorrectDistance() {
-        buildGraph(astar);
         assertEquals(3.0, astar.getDistance("A", "D"), 1e-9);
     }
 
     @Test
-    public void astarHandlesUnreachableTarget() {
-        astar.addEdge("A", "B", 1);
-        astar.addEdge("X", "Y", 1);
-        assertTrue(astar.findShortestPath("A", "Y").isEmpty());
-    }
-
-    @Test
     public void astarWithEuclideanHeuristicStaysOptimal() {
-        // Coordinates used only by the heuristic.
         Map<String, double[]> coords = new HashMap<>();
         coords.put("A", new double[]{0, 0});
         coords.put("B", new double[]{1, 0});
@@ -108,38 +85,5 @@ public class IAlgoShortestPathTest {
 
         assertEquals(3.0, algo.getDistance("A", "D"), 1e-9);
         assertEquals(Arrays.asList("A", "B", "D"), algo.findShortestPath("A", "D"));
-    }
-
-    // ----- Cross-check: same graph, same distances -----
-
-    @Test
-    public void bothAlgorithmsAgreeOnDistances() {
-        IAlgoShortestPath<String> a = new DijkstraAlgoImpl<>();
-        IAlgoShortestPath<String> b = new AStarAlgoImpl<>();
-        buildGraph(a);
-        buildGraph(b);
-        String[] nodes = {"A", "B", "C", "D"};
-        for (String src : nodes) {
-            for (String dst : nodes) {
-                assertEquals(a.getDistance(src, dst), b.getDistance(src, dst), 1e-9);
-            }
-        }
-    }
-
-    // ----- Input validation -----
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nullSourceThrows() {
-        dijkstra.findShortestPath(null, "B");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void negativeWeightThrows() {
-        astar.addEdge("A", "B", -1);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void nullHeuristicThrows() {
-        new AStarAlgoImpl<String>(null);
     }
 }

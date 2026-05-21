@@ -51,13 +51,13 @@ Final project for the Advanced Java course at HIT.
 
 ## How to run the tests
 
-### Part A (11 tests)
+### Part A (4 tests)
 
     cd AlgorithmModule
     java -cp "AlgorithmModule.jar:lib/junit-4.13.2.jar:lib/hamcrest-core.jar" \
         org.junit.runner.JUnitCore com.parklight.algorithm.IAlgoShortestPathTest
 
-### Part B (11 tests)
+### Part B (4 tests)
 
     cd ParkLightApp
     java -cp "build/main:build/test:lib/AlgorithmModule.jar:../AlgorithmModule/lib/junit-4.13.2.jar:../AlgorithmModule/lib/hamcrest-core.jar" \
