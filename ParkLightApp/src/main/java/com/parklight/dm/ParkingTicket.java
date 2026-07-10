@@ -1,13 +1,12 @@
 package com.parklight.dm;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * A ticket issued when a vehicle parks. Tracks entry/exit times and price.
  * exitTime = 0 means the vehicle is still parked.
  */
-public class ParkingTicket implements Serializable {
+public class ParkingTicket implements DataModel {
 
     private static final long serialVersionUID = 1L;
 

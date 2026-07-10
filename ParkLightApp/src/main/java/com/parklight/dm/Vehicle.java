@@ -1,12 +1,11 @@
 package com.parklight.dm;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * A vehicle that wants to park in the lot.
  */
-public class Vehicle implements Serializable {
+public class Vehicle implements DataModel {
 
     private static final long serialVersionUID = 1L;
 

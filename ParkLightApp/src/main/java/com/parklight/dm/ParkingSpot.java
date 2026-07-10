@@ -1,13 +1,12 @@
 package com.parklight.dm;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * A single parking spot in the lot.
  * Coordinates (x, y) are used by the A* heuristic to estimate distances.
  */
-public class ParkingSpot implements Serializable {
+public class ParkingSpot implements DataModel {
 
     private static final long serialVersionUID = 1L;
 
